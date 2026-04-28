@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="сайт Шахзада Асима">
+  <link rel="stylesheet" href="style.css">
+  <title>SHAKHZAD ASYM</title>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <a href="#hero">Главная</a>
+    <a href="#about">О нём</a>
+    <a href="#musics">Музыка</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero">
+    <h1 class="fade-up">SHAKHZAD ASYM</h1>
+
+    <div class="release fade-up">
+      <span class="release-label">НОВЫЙ РЕЛИЗ</span>
+      <h2 class="release-title">HÉKAYE</h2>
+      <p class="release-date">5 мая</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    
+    <div class="about-left fade-up">
+      <h2>О нём</h2>
+      <p>
+        Молодой талант, в сердце которого живет музыка для всего уйгурского народа.
+      </p>
+      <a href="https://parvaz.kz/index.php/sahzad-asim" target="_blank">
+        Подробнее
+      </a>
+    </div>
+
+    <div class="about-right">
+      <div class="card fade-up">
+        <h3>Дата</h3>
+        <p>22 января</p>
+      </div>
+
+      <div class="card fade-up">
+        <h3>Жанр</h3>
+        <p>Поп-фолк</p>
+      </div>
+
+      <div class="card fade-up">
+        <h3>Город</h3>
+        <p>Алматы</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- MUSIC -->
+  <section id="musics">
+    <h2 class="fade-up">Музыка</h2>
+
+    <div class="tracks">
+
+      <a href="https://open.spotify.com/track/5OUic286pnexnj9f8rsJas" target="_blank" class="track fade-up">
+        <div class="track-content">
+          <h3>Güzel Sheher</h3>
+          <p>Shakhzad Asym</p>
+        </div>
+        <div class="play-icon">▶</div>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="socials">
+    <a href="https://www.instagram.com/shakhzadasim/" target="_blank">Instagram</a>
+    <a href="https://www.tiktok.com/@shakhzadasim" target="_blank">TikTok</a>
+    <a href="https://wa.me/77075347344?text=Здравствуйте" target="_blank">WhatsApp</a>
+  </div>
+  <p>© Shakhzad Asym</p>
+</footer>
+
+<!-- JS -->
+<script>
+/* Анимация при скролле */
+const elements = document.querySelectorAll('.fade-up');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+elements.forEach(el => observer.observe(el));
+
+
+/* Активное меню */
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (scrollY >= sectionTop - 200) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+
+/* Плавный скролл */
+document.querySelectorAll('nav a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+
+</body>
+</html>
